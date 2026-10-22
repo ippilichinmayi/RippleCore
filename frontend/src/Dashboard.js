@@ -22,7 +22,7 @@ function Dashboard() {
 
 
   async function loadTransactions() {
-    const res = await fetch("http://localhost:4000/api/transactions");
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/transactions`);
     const data = await res.json();
     setTransactions(data);
   }
