@@ -27,8 +27,8 @@ db.run(`
 `);
 
 const razorpay = new Razorpay({
-  key_id: "rzp_test_RyX9yL4cAxPOUu",
-  key_secret: "yqs3WSAalHsdtU3V3c2LdfQu"
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET
 });
 
 
@@ -66,7 +66,7 @@ app.post("/api/create-payment", async (req, res) => {
 
 
 app.post("/api/webhook/razorpay", (req, res) => {
-  const secret = "WEBHOOK_SECRET";
+  const secret = process.env.RAZORPAY_WEBHOOK_SECRET;
 
   const shasum = crypto.createHmac("sha256", secret);
   shasum.update(req.rawBody);
